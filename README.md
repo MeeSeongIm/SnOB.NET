@@ -11,3 +11,4 @@ http://people.cs.uchicago.edu/~risi/
 
 Thesis: http://people.cs.uchicago.edu/~risi/papers/KondorThesis.pdf
 
+Video Lectures: http://videolectures.net/risi_kondor/
