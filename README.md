@@ -5,7 +5,9 @@ SnOB.NET
 http://people.cs.uchicago.edu/~risi/SnOB/index.html
 
 For more information about the work of Risi Kondor
-Thesis: http://people.cs.uchicago.edu/~risi/papers/KondorThesis.pdf
 
 University Page:
 http://people.cs.uchicago.edu/~risi/
+
+Thesis: http://people.cs.uchicago.edu/~risi/papers/KondorThesis.pdf
+
