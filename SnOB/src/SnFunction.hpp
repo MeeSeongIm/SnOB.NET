@@ -35,7 +35,7 @@
 #define _SnFunction
 
 #include <vector>
-
+#include <stdlib.h> 
 #include "Matrix.hpp"
 
 #include "Sn.h"
