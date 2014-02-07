@@ -143,31 +143,29 @@ void Sn::FourierTransform::ifft(Sn::Function* target, const int _offset) const{
 }
 
 
-
-//FIELD  Sn::FourierTransform::operator()(const StandardTableau& t1, const StandardTableau& t2) const{
-//  Partition shape=t1.shape();
-//  for(int i=0; i<group->irreducibles.size(); i++){
-//   const Sn::Irreducible* rho=group->irreducibles[i];
-//    if(shape==rho->partition){
-//      for(int j=0; j<rho->degree; j++){
-//	StandardTableau* T1=rho->tableau(j);
-//	if(t1==*T1){
-//	  for(int k=0; k<rho->degree; k++){
-//	    StandardTableau* T2=rho->tableau(k);
-//	    if(t2==*T2){
-//	      delete T2;
-//	      delete T1;
-//	      return matrix[i]->at(j,k);
-//	    }
-//	    delete T2;
-//	  }
-//	}
-//	delete T1;
-//      }
-//    }
-//  }
-//}
-
+FIELD  Sn::FourierTransform::operator()(const StandardTableau& t1, const StandardTableau& t2) const{
+  Partition shape=t1.shape();
+  for(int i=0; i<group->irreducibles.size(); i++){
+   const Sn::Irreducible* rho=group->irreducibles[i];
+    if(shape==rho->partition){
+      for(int j=0; j<rho->degree; j++){
+	StandardTableau* T1=rho->tableau(j);
+	if(t1==*T1){
+	  for(int k=0; k<rho->degree; k++){
+	    StandardTableau* T2=rho->tableau(k);
+	    if(t2==*T2){
+	      delete T2;
+	      delete T1;
+	      return matrix[i]->at(j,k);
+	    }
+	    delete T2;
+	  }
+	}
+	delete T1;
+      }
+    }
+  }
+}
 
 
 string Sn::FourierTransform::str() const {
