@@ -1,0 +1,9 @@
+.settings
+.cproject
+.project
+*.com
+*.class
+*.exe
+*.dll
+*.o
+*.so

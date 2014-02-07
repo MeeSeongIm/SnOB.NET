@@ -37,8 +37,6 @@
 #include <vector>
 #include <string>
 
-class Partition;
-
 #include "SnElement.hpp"
 
 using namespace std;

@@ -45,7 +45,7 @@
 
 using namespace std;
 
-class Sn::Irreducible: public FiniteGroup::Irreducible{
+class Sn::Irreducible {
 public:
 
   Irreducible(const Sn* _group, const Partition& _partition); 

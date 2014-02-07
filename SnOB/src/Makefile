@@ -30,7 +30,7 @@ SnFtree.o: SnFtree.cpp SnFtree.hpp Sn.hpp SnFunction.hpp SnElement.o  Matrix.hpp
 	gcc -c SnFtree.cpp $(CFLAGS)
 
 
-Sn.o: Sn.cpp Sn.hpp SnElement.hpp StandardTableau.hpp Partition.hpp FiniteGroup.hpp Group.hpp 
+Sn.o: Sn.cpp Sn.hpp SnElement.hpp StandardTableau.hpp Partition.hpp FiniteGroup.hpp 
 	gcc -c Sn.cpp $(CFLAGS)
 
 testSnFtree: testSnFtree.cpp Sn.o SnFtree.o SnFourierTransform.o SnFunction.o SnIrreducible.o StandardTableau.o Partition.o SnElement.o 

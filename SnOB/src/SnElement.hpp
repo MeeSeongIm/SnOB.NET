@@ -36,10 +36,7 @@
 
 #include <vector>
 
-
 #include "Sn.hpp"
-
-class Sn::Element;
 
 #include "Cycles.hpp"
 

@@ -99,12 +99,11 @@ Sn::Element* Sn::operator[](const int perm) const{
 Sn::Irreducible* Sn::irreducible(const Partition& p, int& index){
   index=0;
   for(vector<Irreducible*>::iterator it=irreducibles.begin(); it!=irreducibles.end(); it++){
-    if((*it)->partition==p) return &(**it); // very careful here!!!!
+    if((*it)->partition==p)
+    	return &(**it); // very careful here!!!!
     index++;
   }
 }
-
-
 
 
 string Sn::str(){

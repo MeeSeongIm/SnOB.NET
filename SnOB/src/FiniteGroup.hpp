@@ -40,11 +40,9 @@
 
 class FiniteGroup;
 
-#include "Group.hpp"
-
 using namespace std;
 
-class FiniteGroup: public Group{
+class FiniteGroup{
 public:
   class Element;
   class Function;
@@ -56,7 +54,7 @@ public:
 };
 
 // not having this defined causes the wrong constructor being called and a seg fault in Sn
-class FiniteGroup::Element: public Group::Element{
+class FiniteGroup::Element{
 public:
 
 
