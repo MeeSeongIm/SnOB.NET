@@ -35,6 +35,7 @@
 #define _SnElement
 
 #include <vector>
+#include <iostream>
 
 #include "Sn.hpp"
 
@@ -42,7 +43,7 @@
 
 using namespace std;
 
-class Sn::Element: public FiniteGroup::Element{
+class Sn::Element {
 public:
 
   Element(const Sn& _group):n(_group.n){

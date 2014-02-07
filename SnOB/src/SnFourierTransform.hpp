@@ -45,7 +45,7 @@
 
 using namespace std;
 
-class Sn::FourierTransform: FiniteGroup::FourierTransform{
+class Sn::FourierTransform {
 
 public:
 

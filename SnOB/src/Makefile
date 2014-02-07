@@ -20,7 +20,7 @@ SnElement.o: SnElement.cpp SnElement.hpp Cycles.o Sn.hpp
 SnIrreducible.o: SnIrreducible.hpp SnIrreducible.cpp Partition.o StandardTableau.o SnElement.o  Sn.o
 	gcc -c SnIrreducible.cpp $(CFLAGS)
  
-SnFunction.o: SnFunction.cpp SnFunction.hpp SnElement.o FiniteGroup.hpp Sn.hpp 
+SnFunction.o: SnFunction.cpp SnFunction.hpp SnElement.o Sn.hpp 
 	gcc -c SnFunction.cpp $(CFLAGS)
 
 SnFourierTransform.o: SnFourierTransform.cpp SnFourierTransform.hpp Sn.hpp SnFunction.hpp SnElement.o  Matrix.hpp
@@ -30,7 +30,7 @@ SnFtree.o: SnFtree.cpp SnFtree.hpp Sn.hpp SnFunction.hpp SnElement.o  Matrix.hpp
 	gcc -c SnFtree.cpp $(CFLAGS)
 
 
-Sn.o: Sn.cpp Sn.hpp SnElement.hpp StandardTableau.hpp Partition.hpp FiniteGroup.hpp 
+Sn.o: Sn.cpp Sn.hpp SnElement.hpp StandardTableau.hpp Partition.hpp 
 	gcc -c Sn.cpp $(CFLAGS)
 
 testSnFtree: testSnFtree.cpp Sn.o SnFtree.o SnFourierTransform.o SnFunction.o SnIrreducible.o StandardTableau.o Partition.o SnElement.o 

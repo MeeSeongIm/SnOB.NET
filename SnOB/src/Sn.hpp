@@ -2,17 +2,14 @@
 #define _Sn
 
 #include <sstream>
+#include <vector>
 #include <set>
-
-#include "FiniteGroup.hpp"
 
 class Sn;
 
 class Partition; 
 
-using namespace std;
-
-class Sn: public FiniteGroup{
+class Sn {
 public:
   class Element;
   class Irreducible; 
@@ -25,17 +22,19 @@ public:
   Sn(const int _n);
   ~Sn();
 
+  int order;
+
   Element* operator[](const int i) const; 
 
   Irreducible* irreducible(const Partition& p, int& index); 
 
-  void branching(const vector<int>& rhos, vector<int>& result) const;
+  void branching(const std::vector<int>& rhos, std::vector<int>& result) const;
 
-  string str(); 
+  std::string str();
 
   const int n;
   Sn* subgroup; 
-  vector<Irreducible*> irreducibles; 
+  std::vector<Irreducible*> irreducibles;
 
 };
 

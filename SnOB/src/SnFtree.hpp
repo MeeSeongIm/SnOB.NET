@@ -41,7 +41,6 @@
 
 #include "Matrix.hpp"
 
-#include "FiniteGroup.hpp"
 #include "Sn.hpp"
 #include "SnFunction.hpp"
 #include "SnIrreducible.hpp"
@@ -49,7 +48,7 @@
 
 using namespace std;
 
-class Sn::Ftree : FiniteGroup::Ftree{
+class Sn::Ftree {
 public:
 
   Ftree(const Sn& _group, const int _left=-1, const int _right=-1);

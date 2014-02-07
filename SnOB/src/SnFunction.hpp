@@ -42,13 +42,10 @@
 #include "Sn.hpp"
 #include "SnElement.hpp"
 #include "SnFourierTransform.hpp" 
-#include "FiniteGroup.hpp"
 
 using namespace std;
 
-
-
-class Sn::Function: public FiniteGroup::Function{
+class Sn::Function {
 public:
 
   friend class Sn::FourierTransform;
@@ -65,6 +62,18 @@ public:
   void diffuse(const double beta);
   string str() const;
 
+  double norm() const {
+	  double result;
+	  for(int i=0; i<order; i++) {
+		  result+=0;
+		  /*complex<double>::norm(f[i]);*/
+	  }
+	  return sqrt(result);
+  }
+
+  int n;
+  int order;
+  FIELD* f;
 
 private:
 
