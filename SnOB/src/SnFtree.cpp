@@ -459,27 +459,27 @@ double Sn::Ftree::max(vector<int>& result, double maxsofar){
 }
 
 
-void Sn::Ftree::str_recurse(ostringstream& stream, Sn::Element L, Sn::Element R) const{
+void Sn::Ftree::str_recurse(ostringstream& stream, IElement L, IElement R) const{
   if(matrix.size()){
     if(n>1){
-      Sn::Element e(L.n);
+      SnElement e(L.n);
       if(!(L==e && R==e)) stream<<"Coset "<<L.str()<<" S_"<<n<<" "<<R.str()<<endl<<endl;;
       for (int i=0; i<matrix.size(); i++)
 	stream<<group->irreducibles[Iindex[i]]->partition.str()<<endl<<matrix[i]->str()<<endl;
     }else{
-      Sn::Element* sigma=L*R;
+      SnElement* sigma=L*R;
       stream<<sigma->str()<<" : "<<matrix[0]->at(0,0)<<endl;
       delete sigma;
     }
   }else{
     for(int i=0; i<child.size(); i++)
-      child[i]->str_recurse(stream,Sn::Element(L).CcycleR(child[i]->left,n),Sn::Element(R).CcycleL(child[i]->right,n));
+      child[i]->str_recurse(stream,SnElement(L).CcycleR(child[i]->left,n),SnElement(R).CcycleL(child[i]->right,n));
   }
 }
 
 string Sn::Ftree::str() const {
   ostringstream result;
-  str_recurse(result,Sn::Element(*group),Sn::Element(*group));
+  str_recurse(result,SnElement(*group),SnElement(*group));
   return result.str(); 
 }
 

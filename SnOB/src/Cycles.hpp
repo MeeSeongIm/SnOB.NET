@@ -41,13 +41,13 @@ using namespace std;
 
 class Cycles;
 
-#include "SnElement.hpp"
+#include "IElement.hpp"
 
 
 class Cycles: vector<vector<int> > {
 public:
 
-  Cycles(const Sn::Element& p);
+  Cycles(const IElement& p);
 
   string str();
 

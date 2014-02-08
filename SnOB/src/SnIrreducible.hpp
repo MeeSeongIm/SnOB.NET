@@ -40,7 +40,7 @@
 #include "Matrix.hpp"
 #include "Partition.hpp"
 #include "StandardTableau.hpp"
-#include "SnElement.hpp"
+#include "IElement.hpp"
 #include "Sn.hpp"
 
 using namespace std;
@@ -53,7 +53,7 @@ public:
   ~Irreducible(){/*delete tdash[]; delete coeff1[]; delete coeff2[];*/}
   // why does this seg-fault???? because there were no []'s try again!
 
-  Matrix<FIELD >* rho(const Sn::Element& p);
+  Matrix<FIELD >* rho(const IElement& p);
   // Return the representation matrix correspoding to group element p. 
   // The representation is given in terms of Young's orthogonal basis. 
 

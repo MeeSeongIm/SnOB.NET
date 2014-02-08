@@ -1,5 +1,5 @@
 #include "Sn.hpp"
-#include "SnElement.hpp"
+#include "IElement.hpp"
 #include <iostream>
 
 main(){

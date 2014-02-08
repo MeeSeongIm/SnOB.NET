@@ -31,14 +31,15 @@
 ----------------------------------------------------------------------------- */
 
 
-#include"Cycles.hpp"
+#include "Cycles.hpp"
+#include "IElement.hpp"
 
 #include <sstream>
 
 
 
-Cycles::Cycles(const Sn::Element& p){
-  const int n=p.n;
+Cycles::Cycles(const IElement& p){
+  const int n = p.GetN();
   bool* flag=new bool[n];
   for(int i=0; i<n; i++) flag[i]=false;
   for(int i=0; i<n; i++){

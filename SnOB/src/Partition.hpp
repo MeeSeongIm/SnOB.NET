@@ -37,7 +37,7 @@
 #include <vector>
 #include <string>
 
-#include "SnElement.hpp"
+#include "IElement.hpp"
 
 using namespace std;
 
@@ -47,7 +47,7 @@ public:
 
   Partition(){};
   Partition( int a, ...); 
-  Partition(const Sn::Element& sigma); 
+  Partition(const IElement& sigma);
 
   int n() const {int result=0; for(int i=0; i<size(); i++) result+=at(i); return result;};
 
