@@ -32,7 +32,6 @@
 
 
 #include "IElement.hpp"
-#include "ElementFactory.hpp"
 #include "SnIrreducible.hpp"
 
 #include <sstream>
@@ -92,7 +91,7 @@ IElement* Sn::operator[](const int perm) const{
   //  v[i]=v[i-m];
   //  v[i-m]=t;
   //}
-  return ElementFactory::Get(n,v);
+  return new SnElement(n,v);
 } 
 
 

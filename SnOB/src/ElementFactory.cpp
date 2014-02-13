@@ -30,16 +30,26 @@
 
 ----------------------------------------------------------------------------- */
 
-#include "ElementFactory.hpp"
-#include "SnElement.hpp"
+#ifndef _ElementFactory
+#define _ElementFactory
 
-IElement* ElementFactory::Get(const int n) { return new SnElement(n); }
-IElement* ElementFactory::GetAs(int a1, ...) {
-	va_list params;
-	va_start(params, a1);
-	return new SnElement(a1, params);
-}
-IElement* ElementFactory::Get(const int _n, int* v) { return new SnElement(_n, v);}
-IElement* ElementFactory::Get(const int _n, const vector<int> fixed) { return new SnElement(_n, fixed); }
-IElement* ElementFactory::Get(const vector<int>& factorization, const int _n) { return new SnElement(factorization, _n); }
-IElement* ElementFactory::Get(const IElement& o) { return new SnElement(o); }
+#include <vector>
+#include <iostream>
+
+#include "Sn.hpp"
+#include "IElement.hpp"
+
+using namespace std;
+
+class ElementFactory {
+public:
+	IElement& Get(const Sn& _group);
+	IElement& Get(const int n);
+	IElement& Get(int a1, int a2, ...);
+	IElement& Get(const int _n, int* v);
+	IElement& Get(const int _n, const vector<int> fixed);
+	IElement& Get(const vector<int>& factorization, const int _n);
+	IElement& Get(const IElement& o);
+};
+
+#endif

@@ -14,10 +14,7 @@ Partition.o: Partition.hpp Partition.cpp StandardTableau.hpp  Matrix.hpp
 StandardTableau.o: StandardTableau.hpp StandardTableau.cpp Partition.o 
 	gcc -c StandardTableau.cpp $(CFLAGS)
 
-ElementFactory.o: ElementFactory.cpp ElementFactory.hpp IElement.hpp SnElement.hpp    
-	gcc -c ElementFactory.cpp $(CFLAGS)
-
-SnElement.o: IElement.hpp SnElement.cpp SnElement.hpp ElementFactory.hpp ElementFactory.cpp Cycles.o Sn.hpp  
+SnElement.o: SnElement.cpp SnElement.hpp Cycles.o Sn.hpp  
 	gcc -c SnElement.cpp $(CFLAGS)
 
 SnIrreducible.o: SnIrreducible.hpp SnIrreducible.cpp Partition.o StandardTableau.o SnElement.o  Sn.o
@@ -41,7 +38,7 @@ testSnFtree: testSnFtree.cpp Sn.o SnFtree.o SnFourierTransform.o SnFunction.o Sn
 
 
 
-SnFiles: ElementFactory.o Partition.o StandardTableau.o Cycles.o SnElement.o SnIrreducible.o \
+SnFiles: Partition.o StandardTableau.o Cycles.o SnElement.o SnIrreducible.o \
 	SnFunction.o SnFourierTransform.o SnFtree.o Sn.o 
 
 

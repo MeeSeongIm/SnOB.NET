@@ -35,20 +35,21 @@
 
 #include <vector>
 #include <iostream>
-#include <stdarg.h>
 
+#include "Sn.hpp"
 #include "IElement.hpp"
 
 using namespace std;
 
 class ElementFactory {
 public:
-	static IElement* Get(const int n);
-	static IElement* GetAs(int a1, ...);
-	static IElement* Get(const int _n, int* v);
-	static IElement* Get(const int _n, const vector<int> fixed);
-	static IElement* Get(const vector<int>& factorization, const int _n);
-	static IElement* Get(const IElement& o);
+	IElement& Get(const Sn& _group);
+	IElement& Get(const int n);
+	IElement& Get(int a1, int a2, ...);
+	IElement& Get(const int _n, int* v);
+	IElement& Get(const int _n, const vector<int> fixed);
+	IElement& Get(const vector<int>& factorization, const int _n);
+	IElement& Get(const IElement& o);
 };
 
 #endif
