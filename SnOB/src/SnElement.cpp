@@ -30,26 +30,37 @@
 
 ----------------------------------------------------------------------------- */
 
-
-#include "SnElement.hpp"
 #include <stdarg.h>
+#include "SnElement.hpp"
 
 
-
-SnElement::SnElement(const SnElement& o):
-  n(o.n){
-  p=new int[n]; for(int i=0; i<n; i++) p[i]=o.p[i];
-  pinv=new int[n]; for(int i=0; i<n; i++) pinv[i]=o.pinv[i];
+SnElement::SnElement(const int _n) {
+	n = _n;
+	p=new int[n];
+	pinv=new int[n];
+	for(int i=0; i<n; i++) {
+		p[i]=i+1;
+		pinv[i]=i+1;
+	}
 }
 
 
+SnElement::SnElement(const IElement& o) {
+	n = ((SnElement&)o).n;
 
-SnElement::SnElement(int a1, int a2, ...){
-  va_list params;
-  int arg=a2;
+	p=new int[n];
+	for(int i=0; i<n; i++)
+		p[i]=((SnElement&)o).p[i];
+
+	pinv=new int[n];
+	for(int i=0; i<n; i++)
+		pinv[i]=((SnElement&)o).pinv[i];
+}
+
+
+SnElement::SnElement(int a1, va_list params) {
   vector<int> v;
-  v.push_back(a1);
-  va_start(params,a2);
+  int arg = a1;
   while(arg!=0){
     v.push_back(arg);
     arg=va_arg(params, int);
@@ -63,7 +74,8 @@ SnElement::SnElement(int a1, int a2, ...){
 
 
 // Creates a coset representative
-SnElement::SnElement(const int _n, const vector<int> fixed):n(_n){
+SnElement::SnElement(const int _n, const vector<int> fixed) {
+	n=_n;
   p=new int[n]; pinv=new int[n];
   for(int i=0; i<n; i++) p[i]=i+1;
   for(int j=0; j<fixed.size(); j++){
@@ -78,7 +90,8 @@ SnElement::SnElement(const int _n, const vector<int> fixed):n(_n){
 }
 
 
-SnElement::SnElement(const vector<int>& factorization, const int _n):n(_n){
+SnElement::SnElement(const vector<int>& factorization, const int _n) {
+	n=_n;
   p=new int[n]; pinv=new int[n];
   for(int i=0; i<n; i++) p[i]=i+1;
   for(int j=0; j<factorization.size(); j++){
@@ -92,8 +105,7 @@ SnElement::SnElement(const vector<int>& factorization, const int _n):n(_n){
 }
 
 
-
-bool SnElement::operator==(const IElement& o){
+bool SnElement::operator==(const IElement& o) {
   if(n != (((SnElement&)o).n)) return 0;
   for(int i=0; i<n; i++)
     if(p[i]!=((SnElement&)o).p[i]) return 0;
@@ -101,8 +113,7 @@ bool SnElement::operator==(const IElement& o){
 }
 
 
-
-IElement& SnElement::CcycleL(int j, int q){
+IElement& SnElement::CcycleL(int j, int q) {
   int t=p[q-1];
   for(int i=j+1; i<=q; i++) p[i-1]=p[i-2];
   p[j-1]=t;
@@ -111,8 +122,7 @@ IElement& SnElement::CcycleL(int j, int q){
 }
 
 
-
-IElement& SnElement::CcycleR(int j, int q){
+IElement& SnElement::CcycleR(int j, int q) {
   int t=pinv[j-1];
   for(int i=j; i<=q-1; i++) pinv[i-1]=pinv[i+1-1];
   pinv[q-1]=t;

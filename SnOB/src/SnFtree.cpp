@@ -32,6 +32,7 @@
 
 
 #include "SnFtree.hpp"
+#include "ElementFactory.hpp"
 
 #include <algorithm>
 #include <stdarg.h>
@@ -459,27 +460,27 @@ double Sn::Ftree::max(vector<int>& result, double maxsofar){
 }
 
 
-void Sn::Ftree::str_recurse(ostringstream& stream, IElement L, IElement R) const{
+void Sn::Ftree::str_recurse(ostringstream& stream, IElement* L, IElement* R) const{
   if(matrix.size()){
     if(n>1){
-      SnElement e(L.n);
-      if(!(L==e && R==e)) stream<<"Coset "<<L.str()<<" S_"<<n<<" "<<R.str()<<endl<<endl;;
+      IElement& e = *ElementFactory::Get(L->GetN());
+      if(!(*L==e && *R==e)) stream<<"Coset "<<L->str()<<" S_"<<n<<" "<<R->str()<<endl<<endl;;
       for (int i=0; i<matrix.size(); i++)
 	stream<<group->irreducibles[Iindex[i]]->partition.str()<<endl<<matrix[i]->str()<<endl;
     }else{
-      SnElement* sigma=L*R;
+      IElement* sigma=(*L)*(*R);
       stream<<sigma->str()<<" : "<<matrix[0]->at(0,0)<<endl;
       delete sigma;
     }
   }else{
     for(int i=0; i<child.size(); i++)
-      child[i]->str_recurse(stream,SnElement(L).CcycleR(child[i]->left,n),SnElement(R).CcycleL(child[i]->right,n));
+      child[i]->str_recurse(stream,*(ElementFactory::Get(*L)->CcycleR(child[i]->left,n)),*(ElementFactory::Get(*R)->CcycleL(child[i]->right,n)));
   }
 }
 
 string Sn::Ftree::str() const {
   ostringstream result;
-  str_recurse(result,SnElement(*group),SnElement(*group));
+  str_recurse(result,ElementFactory::Get(group->n),ElementFactory::Get(group->n));
   return result.str(); 
 }
 

@@ -36,26 +36,21 @@
 
 #include <vector>
 #include <iostream>
-
-#include "Sn.hpp"
+#include <sstream>
+#include <stdarg.h>
 #include "IElement.hpp"
-
-//#include "Cycles.hpp"
 
 using namespace std;
 
 class SnElement : public IElement {
 public:
 
-  SnElement(const Sn& _group):n(_group.n){
-    p=new int[n]; pinv=new int[n]; for(int i=0; i<n; i++){p[i]=i+1; pinv[i]=i+1;}}
+  SnElement(const int _n); //{ n = _n; p=new int[n]; pinv=new int[n]; for(int i=0; i<n; i++){p[i]=i+1; pinv[i]=i+1;}}
 
-  SnElement(const int _n):n(_n){
-    p=new int[n]; pinv=new int[n]; for(int i=0; i<n; i++){p[i]=i+1; pinv[i]=i+1;}}
+  SnElement(int a1, va_list params);
 
-  SnElement(int a1, int a2, ...);
-
-  SnElement(const int _n, int* v):n(_n){
+  SnElement(const int _n, int* v) {
+	  n = _n;
     p=new int[n]; pinv=new int[n];
     for(int i=0; i<n; i++) p[i]=v[i];
     for(int i=0; i<n; i++) pinv[p[i]-1]=i+1;}
@@ -64,7 +59,7 @@ public:
 
   SnElement(const vector<int>& factorization, const int _n);
 
-  SnElement(const SnElement& o);
+  SnElement(const IElement& o);
 
   virtual ~SnElement(){delete[] p; delete[] pinv;}
 
@@ -89,7 +84,14 @@ public:
   virtual IElement& CcycleL(int j, int q);
   virtual IElement& CcycleR(int j, int q);
 
-  virtual string str() const {ostringstream result; result<<"[ "; for(int i=0; i<n; i++) result<<p[i]<<" "; result<<"]"; return result.str();}
+  virtual string str() const {
+	  ostringstream result;
+	  result<<"[ ";
+	  for(int i=0; i<n; i++)
+		  result<<p[i]<<" ";
+	  result<<"]";
+	  return result.str();
+  }
 
   virtual int GetN() const {return n;};
 

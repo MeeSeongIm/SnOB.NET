@@ -87,7 +87,7 @@ public:
   
 private:
 
-  void str_recurse(ostringstream& stream, IElement L, IElement R) const;
+  void str_recurse(ostringstream& stream, IElement* L, IElement* R) const;
   Ftree(const Sn& _group, const int _left, const Function& f, const int offset);
   
 public:
