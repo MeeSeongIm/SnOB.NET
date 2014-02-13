@@ -86,7 +86,7 @@ public:
   
 private:
 
-  void str_recurse(ostringstream& stream, Sn::Element L, Sn::Element R) const;
+  void str_recurse(ostringstream& stream, SnElement L, SnElement R) const;
   Ftree(const Sn& _group, const int _left, const Function& f, const int offset);
   
 public:

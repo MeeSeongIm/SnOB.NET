@@ -37,7 +37,7 @@
 
 
 
-Cycles::Cycles(const Sn::Element& p){
+Cycles::Cycles(const SnElement& p){
   const int n=p.n;
   bool* flag=new bool[n];
   for(int i=0; i<n; i++) flag[i]=false;

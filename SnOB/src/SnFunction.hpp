@@ -55,7 +55,7 @@ public:
   Function(const FourierTransform& F); 
   ~Function(){delete[] f;}
 
-  FIELD& operator[](const Element& p);
+  FIELD& operator[](const SnElement& p);
   FourierTransform* FFT() const; 
   Function* convolve(const Function& o) const;
   void randomize();

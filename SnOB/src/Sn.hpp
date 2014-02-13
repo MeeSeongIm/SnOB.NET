@@ -5,13 +5,12 @@
 #include <vector>
 #include <set>
 
-class Sn;
+#include "SnElement.hpp"
 
 class Partition; 
 
 class Sn {
 public:
-  class Element;
   class Irreducible; 
   class Function;
   class FourierTransform;
@@ -24,7 +23,7 @@ public:
 
   int order;
 
-  Element* operator[](const int i) const; 
+  SnElement* operator[](const int i) const;
 
   Irreducible* irreducible(const Partition& p, int& index); 
 

@@ -4,8 +4,8 @@ main(){
   
   Sn G(4);
   Sn::Function f(G);
-  f[Sn::Element(1,2,4,3,NULL)]=3;
-  f[Sn::Element(2,3,1,4,NULL)]=7;
+  f[SnElement(1,2,4,3,NULL)]=3;
+  f[SnElement(2,3,1,4,NULL)]=7;
 
   cout<<"The dense Fourier transform:"<<endl; 
   cout<<Sn::FourierTransform(f).str()<<endl;
