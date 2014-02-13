@@ -19,10 +19,10 @@ main(){
 
   for(int i=0; i<G.order; i++)
     for(int j=0; j<G.order; j++){
-      SnElement* x=G[j]; 
-      SnElement* z=G[i];
-      SnElement* xinv=x->inverse();
-      SnElement* y=(*z)*(*xinv); 
+      Sn::Element* x=G[j]; 
+      Sn::Element* z=G[i];
+      Sn::Element* xinv=x->inverse();
+      Sn::Element* y=(*z)*(*xinv); 
       hdash[*z]+=g[*y]*f[*x];
       delete x,xinv,y,z;
     }

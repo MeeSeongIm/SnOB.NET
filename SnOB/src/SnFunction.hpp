@@ -40,7 +40,7 @@
 
 #include "Sn.h"
 #include "Sn.hpp"
-#include "IElement.hpp"
+#include "SnElement.hpp"
 #include "SnFourierTransform.hpp" 
 
 using namespace std;
@@ -55,7 +55,7 @@ public:
   Function(const FourierTransform& F); 
   ~Function(){delete[] f;}
 
-  FIELD& operator[](const IElement& p);
+  FIELD& operator[](const Element& p);
   FourierTransform* FFT() const; 
   Function* convolve(const Function& o) const;
   void randomize();

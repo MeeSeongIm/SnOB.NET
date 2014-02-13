@@ -7,7 +7,7 @@ main(){
   
   Sn G(5);
 
-  SnElement sigma(4,1,3,5,2,NULL);
+  Sn::Element sigma(4,1,3,5,2,NULL);
 
   Sn::Function f(G);
   f[sigma]=1;

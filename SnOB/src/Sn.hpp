@@ -4,13 +4,14 @@
 #include <sstream>
 #include <vector>
 #include <set>
-#include "IElement.hpp"
+
+class Sn;
 
 class Partition; 
 
 class Sn {
 public:
-  //class Element;
+  class Element;
   class Irreducible; 
   class Function;
   class FourierTransform;
@@ -23,7 +24,7 @@ public:
 
   int order;
 
-  IElement* operator[](const int i) const;
+  Element* operator[](const int i) const; 
 
   Irreducible* irreducible(const Partition& p, int& index); 
 

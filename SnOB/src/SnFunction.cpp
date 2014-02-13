@@ -67,7 +67,7 @@ void Sn::Function::randomize(){
 
 
 
-FIELD& Sn::Function::operator[](const SnElement& p){
+FIELD& Sn::Function::operator[](const Sn::Element& p){
   int t=0;
   int fact=order;
   int v[n]; for(int i=1; i<=n; i++) v[i-1]=i;
@@ -95,7 +95,7 @@ Sn::Function* Sn::Function::convolve(const Sn::Function& o) const{
   Sn::Function* result=new Sn::Function(*group);
   for(int i=0; i<order; i++)
     for(int j=0; j<order; j++){
-      SnElement* z=(*(*group)[j])*(*(*group)[i]);
+      Sn::Element* z=(*(*group)[j])*(*(*group)[i]);
       (*result)[*z]+=o.f[i]*f[j];
       delete z;
     }

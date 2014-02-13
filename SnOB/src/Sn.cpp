@@ -31,7 +31,7 @@
 ----------------------------------------------------------------------------- */
 
 
-#include "IElement.hpp"
+#include "SnElement.hpp"
 #include "SnIrreducible.hpp"
 
 #include <sstream>
@@ -71,7 +71,7 @@ Sn::~Sn(){
 
 
 
-IElement* Sn::operator[](const int perm) const{
+Sn::Element* Sn::operator[](const int perm) const{
   int v[n];
   for(int i=1; i<=n; i++) v[i-1]=i;
   int p=perm;
@@ -91,7 +91,7 @@ IElement* Sn::operator[](const int perm) const{
   //  v[i]=v[i-m];
   //  v[i-m]=t;
   //}
-  return new SnElement(n,v);
+  return new Element(n,v);
 } 
 
 

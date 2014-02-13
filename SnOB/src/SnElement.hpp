@@ -38,63 +38,61 @@
 #include <iostream>
 
 #include "Sn.hpp"
-#include "IElement.hpp"
 
-//#include "Cycles.hpp"
+#include "Cycles.hpp"
 
 using namespace std;
 
-class SnElement : public IElement {
+class Sn::Element {
 public:
 
-  SnElement(const Sn& _group):n(_group.n){
+  Element(const Sn& _group):n(_group.n){
     p=new int[n]; pinv=new int[n]; for(int i=0; i<n; i++){p[i]=i+1; pinv[i]=i+1;}}
 
-  SnElement(const int _n):n(_n){
+  Element(const int _n):n(_n){
     p=new int[n]; pinv=new int[n]; for(int i=0; i<n; i++){p[i]=i+1; pinv[i]=i+1;}}
 
-  SnElement(int a1, int a2, ...);
+  Element(int a1, int a2, ...);
 
-  SnElement(const int _n, int* v):n(_n){
+  Element(const int _n, int* v):n(_n){
     p=new int[n]; pinv=new int[n];
     for(int i=0; i<n; i++) p[i]=v[i];
     for(int i=0; i<n; i++) pinv[p[i]-1]=i+1;}
 
-  SnElement(const int _n, const vector<int> fixed);
+  Element(const int _n, const vector<int> fixed);
 
-  SnElement(const vector<int>& factorization, const int _n);
+  Element(const vector<int>& factorization, const int _n);
 
-  SnElement(const SnElement& o);
+  Element(const Element& o);
 
-  virtual ~SnElement(){delete[] p; delete[] pinv;}
+  ~Element(){delete[] p; delete[] pinv;}
 
-  virtual bool operator==(const IElement& o);
+  bool operator==(const Sn::Element& o);
 
-  virtual int action(const int i) const {return pinv[i-1];}
-  virtual int iaction(const int i) const {return p[i-1];}
+  int action(const int i) const {return pinv[i-1];} 
+  int iaction(const int i) const {return p[i-1];}
 
-  virtual vector<int> effect() const {vector<int> result; for(int i=0; i<n; i++) result.push_back(pinv[i]); return result;}
-  virtual vector<int> ieffect() const {vector<int> result; for(int i=0; i<n; i++) result.push_back(p[i]); return result;}
+  vector<int> effect() const {vector<int> result; for(int i=0; i<n; i++) result.push_back(pinv[i]); return result;}
+  vector<int> ieffect() const {vector<int> result; for(int i=0; i<n; i++) result.push_back(p[i]); return result;}
 
-  virtual IElement* operator*(const IElement& o) const {
-
-	SnElement* result=new SnElement(n);
-    for(int i=0; i<n; i++) result->pinv[i]=pinv[((SnElement&)o).pinv[i]-1];
+  Element* operator*(const Sn::Element& o) const {
+    Element* result=new Element(n);
+    for(int i=0; i<n; i++) result->pinv[i]=pinv[o.pinv[i]-1];
     for(int i=0; i<n; i++) result->p[result->pinv[i]-1]=i+1;
     return result;
   }
 
-  virtual IElement* inverse(){return new SnElement(n,pinv);}
+  Element* inverse(){return new Element(n,pinv);}
 
-  virtual IElement& CcycleL(int j, int q);
-  virtual IElement& CcycleR(int j, int q);
+  Element& CcycleL(int j, int q);
+  Element& CcycleR(int j, int q);
 
-  virtual string str() const {ostringstream result; result<<"[ "; for(int i=0; i<n; i++) result<<p[i]<<" "; result<<"]"; return result.str();}
+  string str() const {ostringstream result; result<<"[ "; for(int i=0; i<n; i++) result<<p[i]<<" "; result<<"]"; return result.str();}
 
-  virtual int GetN() const {return n;};
+  int n;
 
   private:
-  int n;
+  
   int* p; // p=[\sigma^{-1}(1),....,\sigma^{-1}(n)]
   int* pinv;
 
