@@ -43,6 +43,6 @@
 
 #define FIELD double
 //#define FIELD complex<double>
-#define STR_PRECISION 3
+#define STR_PRECISION 7
 
 #endif

@@ -7,9 +7,9 @@ main(int argc, char** argv){
 
   Sn G(5);
   Sn::Function f(G);
-  f[Sn::Element(1,2,3,4,5,NULL)]=9;
-  f[Sn::Element(1,2,4,3,5,NULL)]=3;
-  f[Sn::Element(2,3,1,4,5,NULL)]=7;
+  f[SnElement(1,2,3,4,5,NULL)]=9;
+  f[SnElement(1,2,4,3,5,NULL)]=3;
+  f[SnElement(2,3,1,4,5,NULL)]=7;
 
   Sn::Ftree fsparse(f);
   for(int i=0; i<G.irreducibles.size() && i<m; i++)

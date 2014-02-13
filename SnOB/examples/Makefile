@@ -1,7 +1,7 @@
 CFLAGS = -I ../src 
 LIBS = -lstdc++ -lm
 
-example1: example1.cpp ../src/Sn.o 
+example1: example1.cpp ../src/Sn.o ../src/SnElement.o 
 	gcc -o example1 example1.cpp ../src/*.o $(CFLAGS) $(LIBS)
 
 example2: example2.cpp ../src/SnElement.o 

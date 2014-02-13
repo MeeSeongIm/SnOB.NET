@@ -173,7 +173,7 @@ void Sn::Irreducible::computeYOR(){
 
 
 
-Matrix<FIELD >* Sn::Irreducible::rho(const Sn::Element& p){ 
+Matrix<FIELD >* Sn::Irreducible::rho(const SnElement& p){
   Matrix<FIELD >* result= new Matrix<FIELD >(degree);
   int v[n]; for(int i=1; i<=n; i++) v[i-1]=i;
   for(int m=n; m>0; m--){

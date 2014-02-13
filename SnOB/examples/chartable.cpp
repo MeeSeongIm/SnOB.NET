@@ -2,7 +2,7 @@
 
 main(int argc, char** argv){
 
-  int n=5; 
+  int n=6; 
   if(argc>=2) sscanf(argv[1],"%d",&n);
 
   Sn G(n);

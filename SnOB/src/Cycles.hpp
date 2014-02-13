@@ -47,7 +47,7 @@ class Cycles;
 class Cycles: vector<vector<int> > {
 public:
 
-  Cycles(const Sn::Element& p);
+  Cycles(const SnElement& p);
 
   string str();
 

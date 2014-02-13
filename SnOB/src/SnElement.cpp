@@ -36,7 +36,7 @@
 
 
 
-Sn::Element::Element(const Sn::Element& o):
+SnElement::SnElement(const SnElement& o):
   n(o.n){
   p=new int[n]; for(int i=0; i<n; i++) p[i]=o.p[i];
   pinv=new int[n]; for(int i=0; i<n; i++) pinv[i]=o.pinv[i];
@@ -44,7 +44,7 @@ Sn::Element::Element(const Sn::Element& o):
 
 
 
-Sn::Element::Element(int a1, int a2, ...){
+SnElement::SnElement(int a1, int a2, ...){
   va_list params;
   int arg=a2;
   vector<int> v;
@@ -63,7 +63,7 @@ Sn::Element::Element(int a1, int a2, ...){
 
 
 // Creates a coset representative
-Sn::Element::Element(const int _n, const vector<int> fixed):n(_n){
+SnElement::SnElement(const int _n, const vector<int> fixed):n(_n){
   p=new int[n]; pinv=new int[n];
   for(int i=0; i<n; i++) p[i]=i+1;
   for(int j=0; j<fixed.size(); j++){
@@ -78,7 +78,7 @@ Sn::Element::Element(const int _n, const vector<int> fixed):n(_n){
 }
 
 
-Sn::Element::Element(const vector<int>& factorization, const int _n):n(_n){
+SnElement::SnElement(const vector<int>& factorization, const int _n):n(_n){
   p=new int[n]; pinv=new int[n];
   for(int i=0; i<n; i++) p[i]=i+1;
   for(int j=0; j<factorization.size(); j++){
@@ -93,7 +93,7 @@ Sn::Element::Element(const vector<int>& factorization, const int _n):n(_n){
 
 
 
-bool Sn::Element::operator==(const Sn::Element& o){
+bool SnElement::operator==(const SnElement& o){
   if(n!=o.n) return 0;
   for(int i=0; i<n; i++)
     if(p[i]!=o.p[i]) return 0;
@@ -102,7 +102,7 @@ bool Sn::Element::operator==(const Sn::Element& o){
 
 
 
-Sn::Element& Sn::Element::CcycleL(int j, int q){
+SnElement& SnElement::CcycleL(int j, int q){
   int t=p[q-1];
   for(int i=j+1; i<=q; i++) p[i-1]=p[i-2];
   p[j-1]=t;
@@ -112,7 +112,7 @@ Sn::Element& Sn::Element::CcycleL(int j, int q){
 
 
 
-Sn::Element& Sn::Element::CcycleR(int j, int q){
+SnElement& SnElement::CcycleR(int j, int q){
   int t=pinv[j-1];
   for(int i=j; i<=q-1; i++) pinv[i-1]=pinv[i+1-1];
   pinv[q-1]=t;
