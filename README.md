@@ -1,4 +1,4 @@
-SnOB.NET
+SnOB.NET [FFT on the symmetric group]
 ========
 
 .NET Wrapper for the SnOB library. A C++ library for computing fast Fourier transforms on the symmetric group. SnOB can be found here 
